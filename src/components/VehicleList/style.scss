@@ -31,6 +31,7 @@
 
   @at-root #{&}__picture {
     aspect-ratio: 1;
+    min-height: 100%;
   }
 
   @at-root #{&}__image {
