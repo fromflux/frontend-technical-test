@@ -1,8 +1,8 @@
 .VehicleList {
-  padding: 0;
 
   display: grid;
   grid-template-columns: 1fr;
+  padding: 0;
 
   // -------------- Tablet ----------------
 
@@ -22,31 +22,31 @@
   --secondary-clr: var(--grey_600, #686c70);
   --border-clr: var(--grey_300, #eaeaea);
 
-  display: grid;
-  grid-template-columns: 22.5% auto;
-
   color: var(--primary-clr);
+
+  display: grid;
   
   font-size: 10px;
+  grid-template-columns: 22.5% auto;
 
   @at-root #{&}__picture {
     aspect-ratio: 1;
   }
 
   @at-root #{&}__image {
-    object-fit: cover;
     height: 100%;
+    object-fit: cover;
   }
 
   @at-root #{&}__copy {
-    flex: 1;
-    padding: 0.8em 1.9em;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     
     border-bottom: 1px solid var(--border-clr);
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: .8em 1.9em;
   }
 
   @at-root #{&}__titleWrap {
@@ -55,27 +55,27 @@
   }
   
   @at-root #{&}__title {
-    text-transform: uppercase;
     font-size: 1.3em;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: .2em;
+    text-transform: uppercase;
   }
 
   @at-root #{&}__price {
     color: var(--secondary-clr);
     font-size: 1em;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: .1em;
     
-    margin-block-end: 0.5em;
+    margin-block-end: .5em;
   }
 
   @at-root #{&}__description {
+    -webkit-box-orient: vertical;
     color: var(--secondary-clr);
-    font-size: 1em;
 
     display: -webkit-box;
-    -webkit-box-orient: vertical;
+    font-size: 1em;
     -webkit-line-clamp: 1;
     overflow: hidden;
   }
@@ -83,24 +83,23 @@
   // -------------- Tablet ----------------
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
 
     font-size: 12px;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
 
     @at-root #{&}__picture {
       aspect-ratio: 16/9;
     }
 
     @at-root #{&}__copy {
-      padding: 1.6em 1.9em;
+      border-bottom: 0;
+      border-right: 1px solid var(--border-clr);
 
       justify-content: flex-start;
+      padding: 1.6em 1.9em;
 
       text-align: center;
-
-      border-bottom: none;
-      border-right: 1px solid var(--border-clr);
     }
 
     @at-root #{&}__titleWrap {
@@ -111,9 +110,9 @@
     }  
 
     @at-root #{&}__title {
+      border-bottom: 1px solid;
       border-color: inherit;
       border-top: 1px solid;
-      border-bottom: 1px solid;
     }
 
     @at-root #{&}__description {
