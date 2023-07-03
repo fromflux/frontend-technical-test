@@ -16,6 +16,9 @@ export default function VehicleList() {
 
   return (
     <div data-testid="results">
+      <pre>
+        {JSON.stringify(vehicles, null, 2)}
+      </pre>
       <p>List of vehicles will be displayed here</p>
       <p>
         Visit
