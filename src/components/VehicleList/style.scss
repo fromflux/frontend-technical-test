@@ -1,3 +1,123 @@
 .VehicleList {
-  width: 100%;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  // -------------- Tablet ----------------
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // -------------- Desktop ----------------
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.VehicleCard {
+  --primary-clr: var(--grey_900, #0e141e);
+  --secondary-clr: var(--grey_600, #686c70);
+  --border-clr: var(--grey_300, #eaeaea);
+
+  display: grid;
+  grid-template-columns: 22.5% auto;
+
+  color: var(--primary-clr);
+  
+  font-size: 10px;
+
+  @at-root #{&}__picture {
+    aspect-ratio: 1;
+  }
+
+  @at-root #{&}__image {
+    object-fit: cover;
+    height: 100%;
+  }
+
+  @at-root #{&}__copy {
+    flex: 1;
+    padding: 0.8em 1.9em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    border-bottom: 1px solid var(--border-clr);
+  }
+
+  @at-root #{&}__titleWrap {
+    display: flex;
+    justify-content: left;
+  }
+  
+  @at-root #{&}__title {
+    text-transform: uppercase;
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+  }
+
+  @at-root #{&}__price {
+    color: var(--secondary-clr);
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    
+    margin-block-end: 0.5em;
+  }
+
+  @at-root #{&}__description {
+    color: var(--secondary-clr);
+    font-size: 1em;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
+
+  // -------------- Tablet ----------------
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+
+    font-size: 12px;
+
+    @at-root #{&}__picture {
+      aspect-ratio: 16/9;
+    }
+
+    @at-root #{&}__copy {
+      padding: 1.6em 1.9em;
+
+      justify-content: flex-start;
+
+      text-align: center;
+
+      border-bottom: none;
+      border-right: 1px solid var(--border-clr);
+    }
+
+    @at-root #{&}__titleWrap {
+      display: flex;
+      justify-content: center;
+
+      margin-bottom: 1.2em;
+    }  
+
+    @at-root #{&}__title {
+      border-color: inherit;
+      border-top: 1px solid;
+      border-bottom: 1px solid;
+    }
+
+    @at-root #{&}__description {
+      -webkit-line-clamp: 2;
+    }
+  }
 }

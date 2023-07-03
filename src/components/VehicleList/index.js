@@ -1,9 +1,10 @@
 import React from 'react';
+
 import useData from './useData';
+
 import './style.scss';
 
 export default function VehicleList() {
-  // eslint-disable-next-line no-unused-vars
   const [loading, error, vehicles] = useData();
 
   if (loading) {
@@ -15,29 +16,33 @@ export default function VehicleList() {
   }
 
   return (
-    <div data-testid="results">
-      <pre>
+    <>
+      {/* <pre>
         {JSON.stringify(vehicles, null, 2)}
-      </pre>
-      <p>List of vehicles will be displayed here</p>
-      <p>
-        Visit
-        <a href="/api/vehicles.json" target="_blank"> /api/vehicles.json</a>
-        {' '}
-        (main endpoint)
-      </p>
-      <p>
-        Visit
-        <a href="/api/vehicle_fpace.json" target="_blank">/api/vehicle_fpace.json</a>
-        {' '}
-        (detail endpoint - apiUrl)
-      </p>
-      <p>
-        Visit
-        <a href="/api/vehicle_xf.json" target="_blank">/api/vehicle_xf.json</a>
-        {' '}
-        (vehicle without any price)
-      </p>
-    </div>
+      </pre> */}
+      <ul className="VehicleList" data-testid="results">
+        {vehicles.map((vehicle) => (
+          <li className="VehicleCard" key={vehicle.id}>
+            <picture className="VehicleCard__picture">
+              <source media="(max-width: 767px)" srcSet={vehicle.media[1].url} />
+              <source media="(min-width: 768px)" srcSet={vehicle.media[0].url} />
+              <img className="VehicleCard__image" src={vehicle.media[1].url} alt={vehicle.description} />
+            </picture>
+
+            <div className="VehicleCard__copy">
+              <div className="VehicleCard__titleWrap">
+                <p className="VehicleCard__title">{vehicle.id}</p>
+              </div>
+              <p className="VehicleCard__price">
+                From
+                {' '}
+                {vehicle.price}
+              </p>
+              <p className="VehicleCard__description">{vehicle.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
