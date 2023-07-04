@@ -43,6 +43,10 @@
   padding: 0;
 
   @at-root #{&}__vehicleButton {
+    animation-delay: calc(.1s * var(--i));
+    animation-duration: .5s;
+    animation-fill-mode: backwards;
+    animation-name: animate-fade;
     background: none;
     border: 0;
     display: block;
@@ -54,6 +58,13 @@
     &:focus {
       background-color: var(--grey_300, #eaeaea);
     }
+  }
+
+  @keyframes animate-fade {
+
+    0% { opacity: 0;}
+
+    100% {opacity: 1;}
   }
 
   // -------------- Tablet ----------------

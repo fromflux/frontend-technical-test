@@ -42,12 +42,13 @@ export default function VehicleList() {
         )}
       </dialog>
       <ul className="VehicleList" data-testid="results">
-        {vehicles.map((vehicle) => (
+        {vehicles.map((vehicle, index) => (
           <li key={vehicle.id}>
             <button
               type="button"
               className="VehicleList__vehicleButton"
               data-testid={`vehicleButton_${vehicle.id}`}
+              style={{ '--i': index }}
               onClick={() => {
                 setModalData(vehicle);
                 if (dialogEl.current) {
