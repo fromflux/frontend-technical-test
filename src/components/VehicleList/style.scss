@@ -1,8 +1,60 @@
-.VehicleList {
+.VehicleDialog {
+  border: 1px solid var(--grey_300, #eaeaea);
+  margin: auto;
+  padding: 1.6em 1.9em;
 
+  &::backdrop {
+    background-color: rgba($color: #000000, $alpha: .5);
+  }
+
+  @at-root #{&}__form {
+    color: var(--grey_900, #0e141e);
+    text-align: center;
+  }
+
+  @at-root #{&}__formLabel {
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  @at-root #{&}__formValue {
+    color: var(--grey_600, #686c70);
+    margin-bottom: 1.6em;
+  }
+
+  @at-root #{&}__formValue__item:not(:last-child)::after {
+    content: " / ";
+  }
+
+  @at-root #{&}__button {
+    background-color: var(--grey_300, #eaeaea);
+    border: 1px solid var(--grey_600, #686c70);
+    color: var(--grey_900, #0e141e);
+    padding: .3em 2.5em;
+  }
+}
+
+.VehicleList {
   display: grid;
   grid-template-columns: 1fr;
+  list-style: none;
   padding: 0;
+
+  @at-root #{&}__vehicleButton {
+    background: none;
+    border: 0;
+    display: block;
+    height: 100%;
+    padding: 0;
+    text-align: initial;
+    width: 100%;
+
+    &:focus {
+      background-color: var(--grey_300, #eaeaea);
+    }
+  }
 
   // -------------- Tablet ----------------
 
@@ -21,13 +73,12 @@
   --primary-clr: var(--grey_900, #0e141e);
   --secondary-clr: var(--grey_600, #686c70);
   --border-clr: var(--grey_300, #eaeaea);
-
-  color: var(--primary-clr);
-
-  display: grid;
   
+  color: var(--primary-clr);
+  display: grid;
   font-size: 10px;
-  grid-template-columns: 22.5% auto;
+  grid-template-columns: 22.5% auto;  
+  height: 100%;
 
   @at-root #{&}__picture {
     aspect-ratio: 1;
@@ -35,14 +86,12 @@
   }
 
   @at-root #{&}__image {
-    height: 100%;
+    min-height: 100%;
     object-fit: cover;
   }
 
   @at-root #{&}__copy {
-    
     border-bottom: 1px solid var(--border-clr);
-
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -67,14 +116,12 @@
     font-size: 1em;
     font-weight: 500;
     letter-spacing: .1em;
-    
     margin-block-end: .5em;
   }
 
   @at-root #{&}__description {
     -webkit-box-orient: vertical;
     color: var(--secondary-clr);
-
     display: -webkit-box;
     font-size: 1em;
     -webkit-line-clamp: 1;
@@ -84,7 +131,6 @@
   // -------------- Tablet ----------------
 
   @media screen and (min-width: 768px) {
-
     font-size: 12px;
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
@@ -96,17 +142,14 @@
     @at-root #{&}__copy {
       border-bottom: 0;
       border-right: 1px solid var(--border-clr);
-
       justify-content: flex-start;
       padding: 1.6em 1.9em;
-
       text-align: center;
     }
 
     @at-root #{&}__titleWrap {
       display: flex;
       justify-content: center;
-
       margin-bottom: 1.2em;
     }  
 

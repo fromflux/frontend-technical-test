@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import VehicleList from '..';
 import useData from '../useData';
 
@@ -72,5 +72,21 @@ describe('<VehicleList /> Tests', () => {
     expect(queryByTestId('loading')).toBeNull();
     expect(queryByTestId('error')).toBeNull();
     expect(queryByText(MOCK_VEHICLE.description)).not.toBeNull();
+  });
+
+  it('Should show vehicle dialog when vehicle item clicked', async () => {
+    HTMLDialogElement.prototype.showModal = jest.fn();
+
+    useData.mockReturnValue([false, false, [MOCK_VEHICLE]]);
+    render(<VehicleList />);
+
+    const vehicleButton = screen.getByTestId(`vehicleButton_${MOCK_VEHICLE.id}`);
+    expect(vehicleButton).not.toBeNull();
+
+    fireEvent.click(vehicleButton);
+
+    await expect(screen.getByTestId('dialog-form')).not.toBeNull();
+    await expect(screen.getByText('Emissions information')).not.toBeNull();
+    await expect(screen.getByText(`CO2 Emissions ${MOCK_VEHICLE.meta.emissions.value} g/km`)).not.toBeNull();
   });
 });
